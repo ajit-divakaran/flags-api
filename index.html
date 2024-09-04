@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestCountries Api</title>
+        <!-- -------- Bootstrap ----------- -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <div class="container-fluid" style="background-image: url('data:image/jpeg;base64,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');background-repeat: no-repeat;background-size: cover;">
+        <div class="row w-100">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1 class="text-center mb-5 text-dark">Know your country</h1>
+<div class="d-flex justify-content-center">
+                    <input type="text" id="inputVal" placeholder="Enter Country Name" class="form-control mx-3">
+                    <button class="btn btn-success" onclick=search()>Search</button>
+</div>
+<div id="countryInfo" class="w-100 mt-4 d-flex justify-content-center mb-4">
+    <div class="card mb-3 w-100 p-3 ">
+        <div class="row g-0">
+          <div class="col-md-5 d-flex flex-column justify-content-center">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.YHufaYYtdq8EtHQRPAx_9QHaE8&pid=Api&P=0&h=180" class="img-fluid rounded-start" alt="...">
+            <p class="text-center" id="flagname">Flag</p>
+          </div>
+          <div class="col-md-6 ms-2 p-2">
+            <div class="card-body">
+                <h5 class="card-title" >Name: <span></span></h5>
+                <h5 class="card-title" >Official Name: <span></span></h5>
+                <h5 class="card-title">Currency: <span></span></h5>
+                <h5 class="card-title">Capital: <span></span></h5>
+                <h5 class="card-title">Languages: <span></span></h5>
+                <h5 class="card-title">Borders: <span></span></h5>
+                <h5 class="card-title">Area: <span></span></h5>
+                <h5 class="card-title">Map: <span></span></h5>
+                <h5 class="card-title">Population: <span></span></h5>
+                <h5 class="card-title">Time Zones: <span></span></h5>
+                <h5 class="card-title">Continent: <span></span></h5>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</body>
+<script>
+    async function search(){
+        console.log(inputVal.value);
+
+
+            if(inputVal.value){
+                const response = await fetch(`https://restcountries.com/v3.1/name/${inputVal.value}?fullText=true`);
+                console.log(response);
+                response.json().then((data)=>{
+                    console.log(data);
+                    // flagname.innerHTML = inputVal.value;
+                    //common
+                    const common = data[0].name.common
+                    console.log(common)
+                    // official
+                    const official = data[0].name.official
+                    console.log(official)
+                    //currency
+                    let currinfo=``;
+                    for(let cur in data[0].currencies){
+                        let currencyname = data[0].currencies[cur].name;
+                        let currencySymbol = data[0].currencies[cur].symbol;
+                        // console.log(currencyname,': ',currencySymbol)
+                        // currinfo = currinfo + currencyname + ":" + currencySymbol + ",";
+                        currinfo += `${currencyname}:${currencySymbol}<br>`
+                    }
+                    console.log("currency",currinfo)
+                    //capital
+                    const capital = data[0].capital[0]
+                    console.log(capital)
+                    //language
+                    const lang = data[0].languages
+                    let nationalLang = ""
+                    count=0
+                    for(x in lang){
+                        console.log(lang[x]);
+                        // nationalLang.push(lang[x])
+                        
+                        nationalLang= nationalLang + lang[x]+ " ";
+                        
+                    }
+                    //borders
+                    let border = "" 
+                    
+                    data[0].borders && data[0].borders.forEach(b=>border=border+b+" ")
+                    console.log(border)
+                    //area
+                    const area = data[0].area;
+                    console.log(area)
+
+                    // googlemap
+                    const gmap = data[0].maps.googleMaps
+
+                    //population
+                    const population= data[0].population;
+
+                    // timezone
+                    const timezones = data[0].timezones;
+
+                    //continent
+                    const continent = data[0].continents
+
+                    //flags.png
+                    const flags = data[0].flags.png
+                    countryInfo.innerHTML = `
+                        <div class="card mb-3 w-100 p-3">
+                            <div class="row g-0">
+                                <div class="col-md-5 d-flex flex-column justify-content-center">
+                                    <img src=${flags} class="img-fluid rounded-start" alt="...">
+                                    <p class="text-center" id="flagname">Flag</p>
+                                </div>
+                                <div class="col-md-6 ms-2 p-2">
+                                    <div class="card-body">
+                                        <h5 class="card-title" >Name: <span>${common}</span></h5>
+                                        <h5 class="card-title" >Official Name: <span>${official}</span></h5>
+                                        <h5 class="card-title">Currency: <span>${currinfo}</span></h5>
+                                        <h5 class="card-title">Capital: <span>${capital}</span></h5>
+                                        <h5 class="card-title">Languages: <span>${nationalLang}</span></h5>
+                                        <h5 class="card-title">Borders: <span>${border}</span></h5>
+                                        <h5 class="card-title">Area: <span>${area}</span></h5>
+                                        <h5 class="card-title">Map: <span>${gmap}</span></h5>
+                                        <h5 class="card-title">Population: <span>${population}</span></h5>
+                                        <h5 class="card-title">Time Zones: <span>${timezones}</span></h5>
+                                        <h5 class="card-title">Continent: <span>${continent}</span></h5>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                })
+            }
+            else{
+
+                alert('Please enter the country name')
+        
+            }
+   
+
+  
+  
+    }
+</script>
+</html>
